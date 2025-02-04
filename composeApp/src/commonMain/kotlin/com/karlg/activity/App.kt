@@ -9,18 +9,20 @@ import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.karlg.activity.UIComponents.ClockView
 import kotlinx.datetime.Clock
-import kotlinx.datetime.IllegalTimeZoneException
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -49,6 +51,7 @@ fun countries() = listOf(
 @Composable
 @Preview
 fun App(countries: List<Country> = countries()) {
+
     MaterialTheme {
         var timeAtLocation by remember { mutableStateOf("No location selected") }
         var showCountries by remember { mutableStateOf(false) }
@@ -82,6 +85,9 @@ fun App(countries: List<Country> = countries()) {
             ) {
                 Text("Select")
             }
+            ClockView()
         }
     }
 }
+
+
